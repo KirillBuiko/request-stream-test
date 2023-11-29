@@ -1,0 +1,51 @@
+syntax = "proto3";
+
+enum RequestType {
+  VARIABLE = 0;
+  PROGRAM = 1;
+  TASK = 2;
+  COMPUTATIONAL_MODEL = 3;
+}
+
+message RequestConfig {
+  string request_id = 1;
+}
+
+message VariableInfo {
+  string variable_id = 1;
+}
+
+message RequestInfo {
+  RequestType type = 1;
+//  RequestConfig request_config = 2;
+  oneof info {
+    VariableInfo variable_info = 3;
+  };
+}
+
+message DataChunk {
+  bytes chunk_data = 1;
+}
+
+message GetStreamChunk {
+  DataChunk data = 2;
+}
+
+message SetStreamChunk {
+  oneof info_or_data {
+    RequestInfo info = 1;
+    DataChunk data = 2;
+  }
+}
+
+message SetRequestResponse {
+  oneof info_or_data {
+    VariableInfo variable_info = 1;
+    int32 result_code = 2;
+  }
+}
+
+service RequestService {
+  rpc Get(RequestInfo) returns (stream GetStreamChunk) {}
+  rpc Set(stream SetStreamChunk) returns (SetRequestResponse) {}
+}
