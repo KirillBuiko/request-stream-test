@@ -1,0 +1,16 @@
+syntax = "proto3";
+import "get_messages.proto";
+import "enums.proto";
+
+// info to set or update task
+message TaskDataInfo {
+  optional TaskGetInfo get_info = 1;
+  string task_id = 2;
+}
+
+// info to set or update variable
+message VariableDataInfo {
+  optional VariableGetInfo get_info = 1;
+  string variable_name = 2;
+  DataType data_type = 3;
+}

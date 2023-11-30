@@ -1,6 +1,6 @@
 import Fastify from 'fastify'
 import {fastifyMultipart} from "@fastify/multipart";
-import {getReaderWriter} from "./getReaderWriter";
+import {getReaderWriter} from "../utils/getReaderWriter";
 
 interface GetRequestInfo {
     info: string;

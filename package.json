@@ -5,10 +5,11 @@
   "main": "src/rest-api-stream-test/server.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start-grpc": "node ./src/grpc-stream-test/server.js",
+    "start-grpc-server": "node src/grpc-stream-test/server/server.js",
+    "start-grpc-client": "node src/grpc-stream-test/client/client.js",
     "build-proto": "rmdir /Q /S \"./grpc/build\" & npm run build-proto-types",
     "build-proto-js": "grpc_tools_node_protoc grpc/data_requests.proto --js_out=import_style=commonjs,binary:./grpc/build --grpc_out=grpc_js:.",
-    "build-proto-types": "node ./node_modules/@grpc/proto-loader/build/bin/proto-loader-gen-types.js ./grpc/data_requests.proto --outDir=./grpc/build --longs=String --enums=String --defaults --oneofs --grpcLib=@grpc/grpc-js"
+    "build-proto-types": "node ./node_modules/@grpc/proto-loader/build/bin/proto-loader-gen-types.js ./grpc/data_requests.proto --outDir=./grpc/build --longs=String --enums=String --oneofs --grpcLib=@grpc/grpc-js"
   },
   "author": "",
   "license": "ISC",

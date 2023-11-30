@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+// info to get variable
+message VariableGetInfo {
+  string variable_id = 1;
+}
+
+// info to get task
+message TaskGetInfo {
+  string task_id = 1;
+}

@@ -1,52 +1,38 @@
 syntax = "proto3";
+import "set_messages.proto";
+import "get_messages.proto";
+import "enums.proto";
 
-enum RequestType {
-  VARIABLE = 0;
-  PROGRAM = 1;
-  TASK = 2;
-  COMPUTATIONAL_MODEL = 3;
-}
+//message RequestConfig {
+//  string request_id = 1;
+//}
 
-message RequestConfig {
-  string request_id = 1;
-}
-
-message VariableInfo {
-  string variable_id = 1;
-}
-
-message TaskInfo {
-  string task_id = 1;
-}
-
-message RequestInfo {
-  RequestType type = 1;
-  //  RequestConfig request_config = 2;
-  oneof info {
-    VariableInfo variable_info = 3;
-    TaskInfo task_info = 4;
+message GetRequestInfo {
+  RequestType requestType = 1;
+  oneof info_type {
+    VariableGetInfo variable_get_info = 2;
+    TaskGetInfo task_get_info = 3;
   };
+  //RequestConfig request_config = 3;
 }
 
-message GetStreamChunk {
-  bytes chunk_data = 1;
+message DataRequestInfo {
+  RequestType requestType = 1;
+  oneof info_type {
+    VariableDataInfo variable_data_info = 2;
+    TaskDataInfo task_data_info = 3;
+  }
+  //RequestConfig request_config = 3;
 }
 
-message SetStreamChunk {
+message DataStream {
   oneof info_or_data {
-    RequestInfo info = 1;
+    DataRequestInfo info = 1;
     bytes chunk_data = 2;
   }
 }
 
-message SetRequestResponse {
-  oneof info_or_data {
-    VariableInfo variable_info = 1;
-    int32 result_code = 2;
-  }
-}
-
 service DataRequests {
-  rpc Get(RequestInfo) returns (stream GetStreamChunk) {}
-  rpc Set(stream SetStreamChunk) returns (SetRequestResponse) {}
+  rpc Get(GetRequestInfo) returns (stream DataStream) {}
+  rpc Set(stream DataStream) returns (GetRequestInfo) {}
 }

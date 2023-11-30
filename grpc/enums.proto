@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+enum RequestType {
+  VARIABLE = 0;
+  VARIABLE_LIST = 1;
+  PROGRAM = 10;
+  PROGRAM_GENERATE = 11;
+  PROGRAM_EXECUTE = 12;
+  PROGRAM_INTERPRET = 13;
+  TASK = 20;
+  TASK_PLAN = 21;
+  COMPUTATIONAL_MODEL = 30;
+  COMPUTATIONAL_MODEL_LIST = 31;
+}
+
+enum DataType {
+  FILE = 0;
+  TEXT = 1;
+  LINK = 2;
+}
