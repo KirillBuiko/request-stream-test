@@ -10,14 +10,3 @@ export const defaultGetHandler: DataRequestsHandlers["Get"] =
         file.on("error", () => call.emit("error"));
         file.on("end", () => call.end());
     }
-
-export const defaultGetHandler: DataRequestsHandlers["Set"] =
-    (call, callback) => {
-        callback.
-        console.log("START");
-        call.write({info: {requestType: "VARIABLE", variableDataInfo: {variableName: "variable1", dataType: "TEXT"}}});
-        const file = fs.createReadStream("./text/text-send.txt");
-        file.on("data", (data) => call.write({chunkData: data}));
-        file.on("error", () => call.emit("error"));
-        file.on("end", () => call.end());
-    }

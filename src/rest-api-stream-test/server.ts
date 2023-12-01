@@ -6,9 +6,7 @@ interface GetRequestInfo {
     info: string;
 }
 
-const fastify = Fastify({
-    // logger: true
-})
+const fastify = Fastify()
 
 fastify.register(fastifyMultipart, {
     limits: {
@@ -23,8 +21,6 @@ function wait(ms: number) {
         setTimeout(resolve, ms);
     })
 }
-
-
 
 fastify.post('/set', async (req, reply) => {
     console.log("\n --SET REQUEST");
