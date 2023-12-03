@@ -1,18 +1,8 @@
 import Fastify from 'fastify'
-import {fastifyMultipart} from "@fastify/multipart";
 import {getReaderWriter} from "../utils/getReaderWriter";
-
-interface GetRequestInfo {
-    info: string;
-}
 
 const fastify = Fastify()
 
-fastify.register(fastifyMultipart, {
-    limits: {
-        fileSize: 1024 * 1024 * 1024
-    }
-});
 const port = 3000;
 console.log("3");
 
@@ -54,23 +44,7 @@ fastify.get('/get', async (req, reply) => {
     console.log("\n --GET REQUEST");
     const [reader, writer] = getReaderWriter();
 
-    console.log((req.query as GetRequestInfo).info);
 
-    // const fileReader = fs.createReadStream("./test.txt", "utf-8");
-
-    // reader.push("123123");
-    // await wait(1000);
-    // reader.push("123123");
-    // await wait(1000);
-    // reader.push("123123");
-    // await wait(1000);
-    // reader.emit("end");
-
-    reply.send(reader);
-    writer.write("123");
-    await wait(500);
-    writer.write("456");
-    await wait(500);
     writer.end();
 })
 

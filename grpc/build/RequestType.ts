@@ -1,0 +1,41 @@
+// Original file: grpc/enums.proto
+
+export const RequestType = {
+  VARIABLE: 'VARIABLE',
+  VARIABLE_LIST: 'VARIABLE_LIST',
+  PROGRAM: 'PROGRAM',
+  PROGRAM_GENERATE: 'PROGRAM_GENERATE',
+  PROGRAM_EXECUTE: 'PROGRAM_EXECUTE',
+  PROGRAM_INTERPRET: 'PROGRAM_INTERPRET',
+  TASK: 'TASK',
+  TASK_LIST: 'TASK_LIST',
+  TASK_PLAN: 'TASK_PLAN',
+  COMPUTATIONAL_MODEL: 'COMPUTATIONAL_MODEL',
+  COMPUTATIONAL_MODEL_LIST: 'COMPUTATIONAL_MODEL_LIST',
+} as const;
+
+export type RequestType =
+  | 'VARIABLE'
+  | 0
+  | 'VARIABLE_LIST'
+  | 1
+  | 'PROGRAM'
+  | 10
+  | 'PROGRAM_GENERATE'
+  | 11
+  | 'PROGRAM_EXECUTE'
+  | 12
+  | 'PROGRAM_INTERPRET'
+  | 13
+  | 'TASK'
+  | 20
+  | 'TASK_LIST'
+  | 21
+  | 'TASK_PLAN'
+  | 22
+  | 'COMPUTATIONAL_MODEL'
+  | 30
+  | 'COMPUTATIONAL_MODEL_LIST'
+  | 31
+
+export type RequestType__Output = typeof RequestType[keyof typeof RequestType]

@@ -5,9 +5,10 @@
   "main": "src/rest-api-stream-test/server.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "start-core": "ts-node src/grpc-stream-redirect-test/core/app/main.ts",
     "start-grpc-server": "node src/grpc-stream-test/server/server.js",
     "start-grpc-client": "node src/grpc-stream-test/client/client.js",
-    "build-proto": "rmdir /Q /S \"./grpc/build\" & npm run build-proto-types",
+    "REMOVE-and-build-proto": "rmdir /Q /S \"./grpc/build\" & npm run build-proto-types",
     "build-proto-js": "grpc_tools_node_protoc grpc/data_requests.proto --js_out=import_style=commonjs,binary:./grpc/build --grpc_out=grpc_js:.",
     "build-proto-types": "node ./node_modules/@grpc/proto-loader/build/bin/proto-loader-gen-types.js ./grpc/data_requests.proto --outDir=./grpc/build --longs=String --enums=String --oneofs --grpcLib=@grpc/grpc-js"
   },
@@ -20,6 +21,8 @@
     "fastify": "^4.24.3"
   },
   "devDependencies": {
-    "@types/node": "^20.10.1"
+    "@types/node": "^20.10.2",
+    "tsconfig-paths": "^4.2.0",
+    "tslib": "^2.6.2"
   }
 }
