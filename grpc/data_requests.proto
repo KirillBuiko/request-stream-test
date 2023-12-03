@@ -3,9 +3,6 @@ import "set_messages.proto";
 import "get_messages.proto";
 import "enums.proto";
 
-//message RequestConfig {
-//  string request_id = 1;
-//}
 
 message GetRequestInfo {
   RequestType requestType = 1;
@@ -13,7 +10,6 @@ message GetRequestInfo {
     VariableGetInfo variable_get_info = 2;
     TaskGetInfo task_get_info = 3;
   };
-  //RequestConfig request_config = 3;
 }
 
 message DataRequestInfo {
@@ -22,7 +18,6 @@ message DataRequestInfo {
     VariableDataInfo variable_data_info = 2;
     TaskDataInfo task_data_info = 3;
   }
-  //RequestConfig request_config = 3;
 }
 
 message DataStream {
